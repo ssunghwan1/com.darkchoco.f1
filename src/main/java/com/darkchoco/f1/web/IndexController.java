@@ -32,5 +32,9 @@ public class IndexController {
 
         return "posts-update";
     }
+    @GetMapping("/enterResult")
+    public String utilitiesBorder(Model model){
+        return "enterResult";
+    }
 
 }

@@ -2,7 +2,8 @@ var main = {
     init : function () {
         var _this = this;
         $('#btn-save').on('click', function () {
-            _this.save();
+            //_this.save();
+            _this.saveResult();
         });
 
         $('#btn-update').on('click', function () {
@@ -68,7 +69,31 @@ var main = {
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
-    }
+    },
+     saveResult : function () {
+            var data = {
+                title: $('#title').val(),
+                raceDate: $('#datepicker1').val(),
+                circuit: $('#circuit').val(),
+                ranking: $('#ranking').val(),
+                driver: $('#driver').val(),
+                notes: $('#notes').val()
+            };
+            console.log("data : " + JSON.stringify(data)) ;
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/v1/result',
+                dataType: 'json',
+                contentType:'application/json; charset=utf-8',
+                data: JSON.stringify(data)
+            }).done(function() {
+                alert('저장완료');
+                window.location.href = '/';
+            }).fail(function (error) {
+                alert(JSON.stringify(error));
+            });
+        }
 
 };
 
