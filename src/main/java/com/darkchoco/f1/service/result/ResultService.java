@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.parser.Entity;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +25,20 @@ public class ResultService {
     @Transactional
     public Long save(ResultSaveRequestDto requestDto){
         return resultRepository.save(requestDto.toEntity()).getId();
+    }
+
+    @Transactional
+    public List<Result> saveAll(List<ResultSaveRequestDto> requestDtoList){
+        List<Result> entityList = new ArrayList<>();
+        for(int i=0; i< requestDtoList.size();i++){
+            entityList.add(requestDtoList.get(i).toEntity());
+        }
+        return resultRepository.saveAll(entityList);
+    }
+    public List<ResultResponseDto> findByTitle (String title){
+        //List<ResultResponseDto> entity = resultRepository.findAllByTitle(title);
+
+        return resultRepository.findAllByTitle(title);
     }
 
 //    @Transactional
@@ -40,12 +56,12 @@ public class ResultService {
 //    }
 
 
-    @Transactional(readOnly = true)
-    public List<ResultListResponseDto> findAllDesc() {
-        return resultRepository.findAllDesc().stream()
-                .map(ResultListResponseDto::new)
-                .collect(Collectors.toList());
-    }
+//    @Transactional(readOnly = true)
+//    public List<ResultListResponseDto> findAllDesc() {
+//        return resultRepository.findAllDesc().stream()
+//                .map(ResultListResponseDto::new)
+//                .collect(Collectors.toList());
+//    }
 
 //    @Transactional
 //    public void delete(Long id){

@@ -26,15 +26,16 @@ public class Result extends BaseTimeEntity {
     private String ranking;
     private String driver;
     private String notes;
-
+    private String point;
     @Builder
-    public Result(String title, String circuit, String raceDate, String ranking, String driver, String notes){
+    public Result(String title, String circuit, String raceDate, String ranking, String driver, String notes, String point){
         this.title = title;
         this.circuit = circuit;
         this.raceDate = raceDate;
         this.ranking = ranking;
         this.driver = driver;
         this.notes = notes;
+        this.point = point;
 
     }
 

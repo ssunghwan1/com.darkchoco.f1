@@ -1,3 +1,6 @@
+$( document ).ready(function() {
+
+});
 var main = {
     init : function () {
         var _this = this;
@@ -71,22 +74,64 @@ var main = {
         });
     },
      saveResult : function () {
-            var data = {
-                title: $('#title').val(),
-                raceDate: $('#datepicker1').val(),
-                circuit: $('#circuit').val(),
-                ranking: $('#ranking').val(),
-                driver: $('#driver').val(),
-                notes: $('#notes').val()
-            };
-            console.log("data : " + JSON.stringify(data)) ;
-
+//            var data = {
+//                title: $('#title').val(),
+//                raceDate: $('#date-picker1').val(),
+//                circuit: $('#circuit').val(),
+//                ranking: $('#ranking_1').val(),
+//                driver: $('#driver_1').val(),
+//                notes: $('#notes_1').val()
+//            };
+            var score_cal =[1,25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0]
+            console.log(score_cal.length);
+            var dataArray = [];
+            var title;
+            var raceDate;
+            var circuit;
+            var ranking;
+            var driver;
+            var notes;
+            var point;
+            var inputData ={};
+            var fastestLapPoint = 0;
+            var dnf;
+            var dns;
+            for(var i=1; i<= 20; i++){
+                if($('#notes_'+i).val() == "FastestLap"){
+                    fastestLapPoint =1;
+                }else{
+                    fastestLapPoint=0;
+                }
+                if($('#notes_'+i).val() == "DNF"){
+                    dnf = 0;
+                }else{
+                    dnf = 1;
+                }
+                if($('#driver_'+i).val() == "" || $('#driver_'+i).val() == null){
+                    dns = 0;
+                }else{
+                    dns = 1;
+                };
+                inputData = {
+                   title : $('#title').val(),
+                   raceDate : $('#date-picker1').val(),
+                   circuit : $('#circuit').val(),
+                   ranking : $('#ranking_'+i).val(),
+                   driver : $('#driver_'+i).val(),
+                   notes : $('#notes_'+i).val(),
+                   point : (score_cal[i] + fastestLapPoint) * dnf * dns
+                };
+                dataArray.push(inputData);
+            }
+//            console.log(dataArray);
+//            console.log('data : ' + JSON.stringify(data)) ;
+//            console.log('dataArray : ' + JSON.stringify(dataArray)) ;
             $.ajax({
                 type: 'POST',
-                url: '/api/v1/result',
+                url: '/api/v1/resultAll',
                 dataType: 'json',
                 contentType:'application/json; charset=utf-8',
-                data: JSON.stringify(data)
+                data: JSON.stringify(dataArray)
             }).done(function() {
                 alert('저장완료');
                 window.location.href = '/';

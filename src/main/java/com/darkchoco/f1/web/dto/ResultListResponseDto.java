@@ -16,6 +16,7 @@ public class ResultListResponseDto {
     private String ranking;
     private String driver;
     private String notes;
+    private String point;
 
     public ResultListResponseDto(Result entity){
         this.id = entity.getId();
@@ -25,6 +26,7 @@ public class ResultListResponseDto {
         this.ranking = entity.getRanking();
         this.driver = entity.getDriver();
         this.notes = entity.getNotes();
+        this.point = entity.getPoint();
     }
 
 }

@@ -1,10 +1,9 @@
 {{>layout/header}}
 <!-- Page Wrapper -->
 {{>layout/nav}}
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <div class="container">
+    <div class="container" int ="cont">
         <div class="row">
             <div class="col input-group mb-3">
                 <div>
@@ -20,7 +19,7 @@
             <div class="col input-group mb-3">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">경기일자</span>
-                    <input class="form-control" type="text" id="datepicker1">
+                    <input class="form-control" type="text" id="date-picker1">
                 </div>
             </div>
 
@@ -32,272 +31,40 @@
                        aria-describedby="basic-addon1" id="circuit">
             </div>
         </div>
-
-
-        <div class="row">
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">1등</span>
+        {{#result}}
+            <div class="row">
+                <div class="input-group mb-3 col">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">{{rank_left}}등</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default" id="driver_{{rank_left}}">
+                    <select class="col-3 custom-select" aria-label="Default select example" id="notes_{{rank_left}}">
+                        <option selected>비고</option>
+                        <option value="FastestLap">FastestLap</option>
+                        <option value="DNF">DNF</option>
+                    </select>
+                    <input type="hidden" id="ranking_{{rank_left}}" value ="{{rank_left}}"/>
                 </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default" id="driver1">
-                <select class="col-3 custom-select" aria-label="Default select example" id="notes1">
-                    <option selected>비고</option>
-                    <option value="FastestLap">FastestLap</option>
-                    <option value="DNF">DNF</option>
-                </select>
-            </div>
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">2등</span>
+                <div class="input-group mb-3 col">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">{{rank_right}}등</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default" id="driver_{{rank_right}}">
+                    <select class="col-3 custom-select" aria-label="Default select example" id="notes_{{rank_right}}">
+                        <option selected>비고</option>
+                        <option value="FastestLap">FastestLap</option>
+                        <option value="DNF">DNF</option>
+                    </select>
+                    <input type="hidden" id="ranking_{{rank_right}}" value ="{{rank_right}}"/>
                 </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="FastestLap">FastestLap</option>
-                    <option value="DNF">DNF</option>
-                </select>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">3등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">4등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">5등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">6등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">7등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">8등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">9등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">10등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">11등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">12등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">13등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">14등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">15등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">16등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">17등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">18등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">19등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-            <div class="input-group mb-3 col">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">20등</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-                <select class="col-3 custom-select" aria-label="Default select example">
-                    <option selected>비고</option>
-                    <option value="1">FastestLap</option>
-                    <option value="2">DNF</option>
-                </select>
-            </div>
-        </div>
+        {{/result}}
         <div class="text-right">
             <button type="button" class="btn btn-primary" id="btn-save">저장</button>
         </div>
     </div>
+
     <!-- /.container-fluid -->
-    {{>layout/footer}}
+{{>layout/footer}}
