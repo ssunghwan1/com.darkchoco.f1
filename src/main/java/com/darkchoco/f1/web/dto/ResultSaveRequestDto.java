@@ -1,13 +1,9 @@
 package com.darkchoco.f1.web.dto;
 
-import com.darkchoco.f1.domain.posts.Posts;
-import com.darkchoco.f1.domain.result.Result;
+import com.darkchoco.f1.domain.result.RaceResult;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -18,10 +14,10 @@ public class ResultSaveRequestDto {
     private String ranking;
     private String driver;
     private String notes;
-    private String point;
+    private int point;
 
     @Builder
-    public ResultSaveRequestDto(String title, String circuit, String raceDate, String ranking, String driver, String notes, String point){
+    public ResultSaveRequestDto(String title, String circuit, String raceDate, String ranking, String driver, String notes, int point){
         this.title = title;
         this.circuit = circuit;
         this.raceDate = raceDate;
@@ -31,8 +27,8 @@ public class ResultSaveRequestDto {
         this.point =point;
     }
 
-    public Result toEntity(){
-        return Result.builder()
+    public RaceResult toEntity(){
+        return RaceResult.builder()
                 .title(title)
                 .circuit(circuit)
                 .raceDate(raceDate)

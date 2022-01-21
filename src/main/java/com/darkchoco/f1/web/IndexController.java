@@ -1,7 +1,7 @@
 package com.darkchoco.f1.web;
 
 import com.darkchoco.f1.service.posts.PostsService;
-import com.darkchoco.f1.service.result.ResultService;
+import com.darkchoco.f1.service.result.RaceResultService;
 import com.darkchoco.f1.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ import java.util.List;
 public class IndexController {
 
     private final PostsService postsService;
-    private final ResultService resultService;
+    private final RaceResultService resultService;
 
 //    @GetMapping("/")
 //    public String index(Model model) {
@@ -27,7 +27,8 @@ public class IndexController {
 //    }
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("result", resultService.findByTitle("100퍼"));
+        //model.addAttribute("result", resultService.findByTitle("FM2021"));
+        model.addAttribute("result", resultService.findRankByTitle("FM2021"));
         return "index";
     }
     @GetMapping("/posts/save")
@@ -45,6 +46,25 @@ public class IndexController {
 
     @GetMapping("/enterResult")
     public String utilitiesBorder(Model model) {
+        List<HashMap<String, String>> list = new ArrayList<>();
+        HashMap<String, String> input = new HashMap<>();
+        int num =1;
+        for (int i = 0; i < 10; i++) {
+            input.put("row", Integer.toString(i + 1));
+            input.put("rank_left", Integer.toString(num));
+            num++;
+            input.put("rank_right", Integer.toString(num));
+            num++;
+            list.add(input);
+            input = new HashMap<>();
+        }
+        System.out.println(list);
+        model.addAttribute("result", list);
+        return "enterResult";
+    }
+
+    @GetMapping("/leagueResult")
+    public String leagueResult(Model model) {
         List<HashMap<String, String>> list = new ArrayList<>();
         HashMap<String, String> input = new HashMap<>();
         int num =1;

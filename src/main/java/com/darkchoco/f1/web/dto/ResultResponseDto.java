@@ -1,7 +1,6 @@
 package com.darkchoco.f1.web.dto;
 
-import com.darkchoco.f1.domain.posts.Posts;
-import com.darkchoco.f1.domain.result.Result;
+import com.darkchoco.f1.domain.result.RaceResult;
 import lombok.Getter;
 
 
@@ -13,9 +12,9 @@ public class ResultResponseDto {
     private String ranking;
     private String driver;
     private String notes;
-    private String point;
+    private int point;
 
-    public ResultResponseDto(Result entity){
+    public ResultResponseDto(RaceResult entity){
         this.title = entity.getTitle();
         this.circuit = entity.getCircuit();
         this.raceDate = entity.getRaceDate();

@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Result extends BaseTimeEntity {
+public class RaceResult extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,15 +20,15 @@ public class Result extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(columnDefinition = "TEXT", nullable = true)
     private String raceDate;
     private String circuit;
     private String ranking;
     private String driver;
     private String notes;
-    private String point;
+    private int point;
     @Builder
-    public Result(String title, String circuit, String raceDate, String ranking, String driver, String notes, String point){
+    public RaceResult(String title, String circuit, String raceDate, String ranking, String driver, String notes, int point){
         this.title = title;
         this.circuit = circuit;
         this.raceDate = raceDate;
@@ -38,6 +38,7 @@ public class Result extends BaseTimeEntity {
         this.point = point;
 
     }
+
 
 //    public void update(String title, String circuit, String raceDate, String rank, String driver,String desc){
 //        this.title = title;

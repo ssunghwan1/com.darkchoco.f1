@@ -1,7 +1,7 @@
 package com.darkchoco.f1.springboot.web;
 
-import com.darkchoco.f1.domain.result.Result;
-import com.darkchoco.f1.domain.result.ResultRepository;
+import com.darkchoco.f1.domain.result.RaceResult;
+import com.darkchoco.f1.domain.result.RaceResultRepository;
 import com.darkchoco.f1.web.dto.ResultSaveRequestDto;
 import org.junit.After;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class ResultApiControllerTest {
     private TestRestTemplate restTemplate;
 
     @Autowired
-    private ResultRepository resultRepository;
+    private RaceResultRepository resultRepository;
 
     @After
     public void tearDown() throws Exception{
@@ -64,7 +64,7 @@ public class ResultApiControllerTest {
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
-        List<Result> all = resultRepository.findAll();
+        List<RaceResult> all = resultRepository.findAll();
         System.out.println(all);
         assertThat(all.get(0).getTitle()).isEqualTo(title);
         assertThat(all.get(0).getCircuit()).isEqualTo(circuit);

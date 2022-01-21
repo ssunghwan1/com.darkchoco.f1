@@ -22,5 +22,7 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/F1_ESPORTS
+#    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#    url: jdbc:log4jdbc:postgresql://localhost:5432/F1_ESPORTS
     username: postgres
     password: postgres

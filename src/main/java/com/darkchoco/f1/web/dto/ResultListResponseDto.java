@@ -1,11 +1,7 @@
 package com.darkchoco.f1.web.dto;
 
-import com.darkchoco.f1.domain.posts.Posts;
-import com.darkchoco.f1.domain.result.Result;
+import com.darkchoco.f1.domain.result.RaceResult;
 import lombok.Getter;
-
-import javax.persistence.Column;
-import java.time.LocalDateTime;
 
 @Getter
 public class ResultListResponseDto {
@@ -16,9 +12,9 @@ public class ResultListResponseDto {
     private String ranking;
     private String driver;
     private String notes;
-    private String point;
+    private int point;
 
-    public ResultListResponseDto(Result entity){
+    public ResultListResponseDto(RaceResult entity){
         this.id = entity.getId();
         this.title = entity.getTitle();
         this.raceDate = entity.getRaceDate();
