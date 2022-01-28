@@ -37,7 +37,8 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
     testImplementation 'org.projectlombok:lombok:1.18.20'
     compileOnly 'org.projectlombok:lombok:1.18.20'
-    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
+    implementation 'org.slf4j:jcl-over-slf4j'
 
 
 }
