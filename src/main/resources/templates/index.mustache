@@ -11,7 +11,7 @@
                 <div>
                     <label class="input-group-text" for="inputGroupSelect01">리그명</label>
                 </div>
-                <select class="custom-select" id="title">
+                <select class="custom-select" id="resultTitle">
                     <option value="100퍼" selected>100퍼</option>
                     <option value="FM2021">FM2021</option>
                     <option value="만두리그">만두리그</option>
@@ -19,8 +19,6 @@
             </div>
         </div>
     </div>
-
-
     <table class="table table-striped">
         <thead>
         <tr>
@@ -29,16 +27,17 @@
             <th scope="col">PTS</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="resultTbody">
         {{#result}}
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{rank}}</th>
                 <td>{{driver}}</td>
                 <td>{{point}}</td>
             </tr>
         {{/result}}
         </tbody>
     </table>
+
 </div>
 <!-- /.container-fluid -->
 {{>layout/footer}}

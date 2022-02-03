@@ -56,9 +56,9 @@ public class RaceResultService {
     }
 
     public List<Map<String, Object>> findRankByTitle (String title){
-        List<Map<String, Object>> test = jdbcTemplate.queryForList("SELECT rank () over (order by sum(point) desc),sum(point) as point , driver from  Race_Result    where title = ? group by driver ",title);
-        System.out.println(test);
-        return test;
+        List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT rank () over (order by sum(point) desc) as rank," +
+                "sum(point) as point , driver from  Race_Result    where title = ? group by driver order by rank ",title);
+        return result;
     }
 
 //    @Transactional

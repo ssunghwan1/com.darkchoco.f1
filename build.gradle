@@ -30,7 +30,8 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
     implementation('org.springframework.boot:spring-boot-starter-mustache')
     implementation('org.springframework.boot:spring-boot-devtools')
-    implementation('org.postgresql:postgresql')
+    // implementation('org.postgresql:postgresql')
+    implementation('org.mariadb.jdbc:mariadb-java-client:2.1.2')
     implementation('org.hibernate:hibernate-core:5.4.2.Final')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     annotationProcessor 'org.projectlombok:lombok:1.18.20'

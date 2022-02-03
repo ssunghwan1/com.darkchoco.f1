@@ -16,6 +16,29 @@ var main = {
         $('#btn-delete').on('click', function () {
             _this.delete();
         });
+
+        $('#resultTitle').on('change', function(){
+            _this.select();
+        })
+    },
+    select: function() {
+        var data = {
+            title : $('#resultTitle option:selected').text()
+        };
+        $.ajax({
+                    type: 'GET',
+                    url: '/api/v1/rank/' + data.title,
+                    dataType: 'json',
+                    contentType:'application/json; charset=utf-8',
+                }).done(function(data) {
+                    var result = data;
+                    var template = '{{#result}}<tr><th scope="row">{{rank}}</th> <td>{{driver}}</td> <td>{{point}}</td></tr>{{/result}}';
+                    Mustache.parse(template);
+                    var rendered = Mustache.render(template, result);
+                    $('#resultTbody').html(rendered);
+                }).fail(function (error) {
+                    alert(JSON.stringify(error));
+                });
     },
     save : function () {
         var data = {
