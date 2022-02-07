@@ -27,6 +27,7 @@ public class RaceResult extends BaseTimeEntity {
     private String driver;
     private String notes;
     private int point;
+    private int test;
     @Builder
     public RaceResult(String title, String circuit, String raceDate, String ranking, String driver, String notes, int point){
         this.title = title;
