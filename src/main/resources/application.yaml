@@ -1,16 +1,13 @@
 spring:
   profiles:
-    active: local
+    active: real, real-db
   h2:
     console:
       enabled: 'true'
   jpa:
-    #database: MARIADB
     properties:
       hibernate:
         ddl-auto: create
-        #dialect: org.hibernate.dialect.PostgreSQLDialect
-        #dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         format_sql: true
     show_sql: 'true'
     generate-ddl: true
@@ -22,14 +19,6 @@ spring:
       enabled: true
     mustache:
       cache: false
-  datasource:
-    #driver-class-name: org.postgresql.Driver
-    #url: jdbc:postgresql://localhost:5432/F1_ESPORTS
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    #url: jdbc:log4jdbc:postgresql://localhost:5432/F1_ESPORTS
-    url: jdbc:log4jdbc:mariadb://localhost:3306/F1_ESPORTS
-    username: root
-    password: 1234
 logging:
   level:
     root: info
