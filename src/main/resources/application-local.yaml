@@ -4,3 +4,7 @@ spring:
     url: jdbc:log4jdbc:mariadb://localhost:3306/F1_ESPORTS
     username: root
     password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show_sql: true

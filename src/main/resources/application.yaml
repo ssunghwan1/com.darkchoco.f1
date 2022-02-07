@@ -1,16 +1,7 @@
 spring:
   profiles:
-    active: real, real-db
-  h2:
-    console:
-      enabled: 'true'
-  jpa:
-    properties:
-      hibernate:
-        ddl-auto: create
-        format_sql: true
-    show_sql: 'true'
-    generate-ddl: true
+#    active: real, real-db
+   active: local
   devtools:
     restart:
       enabled: true
