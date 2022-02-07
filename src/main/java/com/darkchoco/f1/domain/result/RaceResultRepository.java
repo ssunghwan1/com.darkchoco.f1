@@ -14,6 +14,6 @@ public interface RaceResultRepository extends JpaRepository<RaceResult, Long> {
     List<RaceResult> findAllByTitle(String title);
 
     // @Query("SELECT rank () over (order by sum(point) desc),sum(point) as point , driver from  RaceResult    where title ='FM2021' group by driver ")
-    @Query("SELECT sum(point) as point , driver FROM RaceResult group by driver and  driver !='' order by point desc")
+    @Query("SELECT sum(point) as point , driver FROM RaceResult where and  driver !='' group by driver order by point desc")
     List<RaceResult> findRankByTitle(String title);
 }
