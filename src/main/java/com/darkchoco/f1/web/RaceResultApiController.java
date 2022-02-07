@@ -32,7 +32,7 @@ public class RaceResultApiController {
 
     @GetMapping("/api/v1/rank/{title}")
     public Map<String, Object> findRankByTitle (@PathVariable String title, Model model){
-        List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT rank () over (order by sum(point) desc) as rank ,sum(point) as point , driver from  Race_Result    where title = ? group by driver order by rank ",title);
+        List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT rank () over (order by sum(point) desc) as rank ,sum(point) as point , driver from  race_result    where title = ? group by driver order by rank ",title);
         model.addAttribute("result",result);
         Map<String, Object> test = new HashMap<>();
         test.put("result", result);
