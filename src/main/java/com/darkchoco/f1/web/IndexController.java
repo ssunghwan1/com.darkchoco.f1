@@ -28,7 +28,7 @@ public class IndexController {
     @GetMapping("/")
     public String index(Model model) {
         //model.addAttribute("result", resultService.findByTitle("FM2021"));
-        model.addAttribute("result", resultService.findRankByTitle("FM2021"));
+        model.addAttribute("result", resultService.findRankByTitle("100퍼"));
         return "index";
     }
     @GetMapping("/posts/save")
