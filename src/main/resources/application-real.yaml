@@ -29,6 +29,7 @@ spring:
     username: root
     password: 1234
   profiles:
+    include: real-db
     active: real
 logging:
   level:
