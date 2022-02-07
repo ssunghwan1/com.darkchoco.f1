@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    h2:
+      console:
+        enabled: 'true'
+      jpa:
+        properties:
+          hibernate:
+            ddl-auto: create
+            format_sql: true
+        show_sql: 'true'
+        generate-ddl: true
