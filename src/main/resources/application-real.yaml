@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: real
   h2:
     console:
       enabled: 'true'
@@ -28,8 +30,6 @@ spring:
     url: jdbc:log4jdbc:mariadb://localhost:3306/F1_ESPORTS
     username: root
     password: 1234
-  profiles:
-    include: real-db
 logging:
   level:
     root: info
