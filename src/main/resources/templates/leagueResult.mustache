@@ -3,50 +3,87 @@
 {{>layout/nav}}
 <!-- Begin Page Content -->
 <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">경기결과</h1>
+        <!-- DataTales Example -->
+<!--    <div class="row">-->
+<!--        <div class="col input-group mb-3">-->
+<!--            <div>-->
+<!--                <label class="input-group-text" for="inputGroupSelect01">리그명</label>-->
+<!--            </div>-->
+<!--            <select class="custom-select" id="title">-->
+<!--                <option value="ALL" selected>전체</option>-->
+<!--                <option value="FM2021" selected>100퍼</option>-->
+<!--                &lt;!&ndash;<option value="만두리그">만두리그</option>&ndash;&gt;-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div class="col input-group mb-3">-->
+<!--            <div class="input-group mb-3">-->
+<!--                <span class="input-group-text" id="inputGroup-sizing-default">경기일자</span>-->
+<!--                <input class="form-control" type="text" id="date-picker1" placeholder="전체">-->
+<!--            </div>-->
+<!--        </div>-->
 
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <div class="col input-group mb-3">
-            <div>
-                <label class="input-group-text" for="inputGroupSelect01"></label>
+<!--        <div class="col input-group mb-3  col">-->
+<!--            <div>-->
+<!--                <span class="input-group-text">서킷</span>-->
+<!--            </div>-->
+<!--            <input type="text" class="form-control" placeholder="전체" aria-label="Username"-->
+<!--                   aria-describedby="basic-addon1" id="circuit">-->
+<!--        </div>-->
+<!--    </div>-->
+        <div class="card shadow mb-4">
+<!--            <div class="card-header py-3">-->
+<!--                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
+<!--            </div>-->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>서킷</th>
+                            <th>드라이버</th>
+                            <th>순위</th>
+                            <th>포인트</th>
+                            <th>경기일자</th>
+                            <th>리그</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#raceResults}}
+                        <tr>
+                            <td>{{circuit}}</td>
+                            <td>{{driver}}</td>
+                            <td>{{ranking}}</td>
+                            <td>{{point}}</td>
+                            <td>{{raceDate}}</td>
+                            <td>{{title}}</td>
+                        </tr>
+                        {{/raceResults}}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <select class="custom-select" id="title">
-                <option value="FM2021" selected>FM2021</option>
-                <option value="100퍼">100퍼</option>
-                <option value="만두리그">만두리그</option>
-            </select>
         </div>
-        <div class="col input-group mb-3">
-            <div>
-                <label class="input-group-text" for="inputGroupSelect01">리그명</label>
-            </div>
-            <select class="custom-select" id="title">
-                <option value="FM2021" selected>FM2021</option>
-                <option value="100퍼">100퍼</option>
-                <option value="만두리그">만두리그</option>
-            </select>
-        </div>
+
     </div>
+    <!-- /.container-fluid -->
 
-
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">POS</th>
-            <th scope="col">DRIVER</th>
-            <th scope="col">PTS</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{#result}}
-            <tr>
-                <th scope="row">1</th>
-                <td>{{driver}}</td>
-                <td>{{point}}</td>
-            </tr>
-        {{/result}}
-        </tbody>
-    </table>
+</div>
+<!-- End of Main Content -->
 </div>
 <!-- /.container-fluid -->
 {{>layout/footer}}
+
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+<script>
+
+</script>
+</body>
+
+</html>

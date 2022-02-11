@@ -26,12 +26,10 @@ public class RaceResultService {
 
     @Transactional
     public List<RaceResult> saveAll(List<ResultSaveRequestDto> requestDtoList){
-//        result.requestDtoList(requestDtoList);
-//        List<RaceResult> entityList = new ArrayList<>();
-//        for(int i=0; i< requestDtoList.size();i++){
-//            entityList.add(requestDtoList.get(i).toEntity());
-//        }
         return resultRepository.saveAll(this.requestDtoList(requestDtoList));
+    }
+    public List<RaceResult> findAll(){
+        return resultRepository.findAll();
     }
     public List<RaceResult> findByTitle (String title){
         return resultRepository.findAllByTitle(title);
@@ -58,6 +56,11 @@ public class RaceResultService {
     public List<Map<String, Object>> findRankByTitle (String title){
         List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT rank () over (order by sum(point) desc) as rank," +
                 "sum(point) as point , driver from  race_result    where title = ?  and  driver !='' group by driver order by rank ",title);
+        return result;
+    }
+
+    public List<Map<String, Object>> findAllDriver (){
+        List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT DISTINCT(DRIVER) FROM race_result");
         return result;
     }
 

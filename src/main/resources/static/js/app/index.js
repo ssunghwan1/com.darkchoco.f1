@@ -97,14 +97,6 @@ var main = {
         });
     },
      saveResult : function () {
-//            var data = {
-//                title: $('#title').val(),
-//                raceDate: $('#date-picker1').val(),
-//                circuit: $('#circuit').val(),
-//                ranking: $('#ranking_1').val(),
-//                driver: $('#driver_1').val(),
-//                notes: $('#notes_1').val()
-//            };
             var score_cal =[1,25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0]
             console.log(score_cal.length);
             var dataArray = [];
@@ -120,6 +112,12 @@ var main = {
             var dnf;
             var dns;
             for(var i=1; i<= 20; i++){
+                if($('#driver_'+i).val() == "" || $('#driver_'+i).val() == null){
+                     continue;//드라이버가 없으면 continue
+                     dns = 0;
+                }else{
+                     dns = 1;
+                }
                 if($('#notes_'+i).val() == "FastestLap"){
                     fastestLapPoint =1;
                 }else{
@@ -130,11 +128,7 @@ var main = {
                 }else{
                     dnf = 1;
                 }
-                if($('#driver_'+i).val() == "" || $('#driver_'+i).val() == null){
-                    dns = 0;
-                }else{
-                    dns = 1;
-                };
+
                 inputData = {
                    title : $('#title').val(),
                    raceDate : $('#date-picker1').val(),
@@ -146,9 +140,6 @@ var main = {
                 };
                 dataArray.push(inputData);
             }
-//            console.log(dataArray);
-//            console.log('data : ' + JSON.stringify(data)) ;
-//            console.log('dataArray : ' + JSON.stringify(dataArray)) ;
             $.ajax({
                 type: 'POST',
                 url: '/api/v1/resultAll',
