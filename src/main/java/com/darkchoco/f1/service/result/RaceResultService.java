@@ -90,7 +90,7 @@ public class RaceResultService {
             }
         });
         for(int i=0; i<result.size(); i++){
-            result.get(i).put("rank",i);
+            result.get(i).put("rank",i+1);
         }
 
 
