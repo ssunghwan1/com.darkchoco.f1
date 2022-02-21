@@ -72,11 +72,12 @@ public class RaceResultService {
         int point;
         int count;
         double rating;
+
         //(획득점수/참여횟수) * 100 + 100
         for(int i=0; i< result.size(); i++){
             point = Integer.parseInt(result.get(i).get("point").toString());
             count = Integer.parseInt(result.get(i).get("count").toString());
-            rating = (point/count)*100 + count*100;
+            rating = ((double)point/(double)count)*100 + (double) count*100;
             result.get(i).put("rating", Math.round(rating));
         }
         System.out.println(result);
