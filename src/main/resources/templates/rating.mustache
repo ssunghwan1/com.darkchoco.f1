@@ -1,0 +1,32 @@
+{{>layout/header}}
+<!-- Page Wrapper -->
+{{>layout/nav}}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+     <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">POS</th>
+            <th scope="col">DRIVER</th>
+            <th scope="col">RATING</th>
+        </tr>
+        </thead>
+        <tbody id="resultTbody">
+        {{#ratingResult}}
+            <tr>
+                <th scope="row">{{rank}}</th>
+                <td>{{driver}}</td>
+                <td>{{rating}}</td>
+            </tr>
+        {{/ratingResult}}
+        </tbody>
+    </table>
+
+</div>
+<!-- /.container-fluid -->
+{{>layout/footer}}
+
+</body>
+
+</html>

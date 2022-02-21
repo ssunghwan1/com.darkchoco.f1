@@ -39,6 +39,15 @@ public class RaceResultApiController {
         return test;
     }
 
+    @GetMapping("/api/v1/auth/{key}")
+    public boolean checkAuth (@PathVariable String key, Model model){
+        boolean isChecked = false;
+        if(key.equals("2022")){
+            isChecked = true;
+        }
+        return isChecked;
+    }
+
 
 //    @PutMapping("/api/v1/RaceResult/{id}")
 //    public Long update(@PathVariable Long id, @RequestBody ResultUpdateRequestDto requestDto){

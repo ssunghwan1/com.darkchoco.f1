@@ -81,5 +81,15 @@ public class IndexController {
         System.out.println(model);
         return "leagueResult";
     }
+    @GetMapping("/rating")
+    public String rating(Model model) {
+        List<Map<String, Object>> raceDate = resultService.findRaceDate("");
+        String firstRaceDate = raceDate.get(raceDate.size()-1).get("race_date").toString();
+
+        System.out.println(firstRaceDate);
+
+        model.addAttribute("ratingResult", resultService.findRating(firstRaceDate));
+        return "rating";
+    }
 
 }

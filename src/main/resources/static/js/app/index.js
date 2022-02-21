@@ -5,8 +5,11 @@ var main = {
     init : function () {
         var _this = this;
         $('#btn-save').on('click', function () {
-            //_this.save();
-            _this.saveResult();
+            if($('#pwd').val() == "2022"){
+                _this.saveResult();
+            }else{
+                alert("인증번호가 일치하지 않습니다")
+            }
         });
 
         $('#btn-update').on('click', function () {

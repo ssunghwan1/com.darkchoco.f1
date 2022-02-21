@@ -9,9 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @RequiredArgsConstructor
@@ -61,6 +59,47 @@ public class RaceResultService {
 
     public List<Map<String, Object>> findAllDriver (){
         List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT DISTINCT(DRIVER) FROM race_result");
+        return result;
+    }
+
+    public List<Map<String, Object>> findRating (String raceDate){
+        List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT \tcount(*) as count,\n" +
+                "\tsum(point) as point ,\n" +
+                "\tdriver " +
+                "from  race_result    where race_date >= ?  and  driver !='' group by driver",raceDate);
+
+        List<Map<String, Object>> ratingResult = new ArrayList<>();
+        int point;
+        int count;
+        double rating;
+        //(획득점수/참여횟수) * 100 + 100
+        for(int i=0; i< result.size(); i++){
+            point = Integer.parseInt(result.get(i).get("point").toString());
+            count = Integer.parseInt(result.get(i).get("count").toString());
+            rating = (point/count)*100 + count*100;
+            result.get(i).put("rating", Math.round(rating));
+        }
+        System.out.println(result);
+        Collections.sort(result, new Comparator<Map<String, Object>>() {
+            @Override
+            public int compare(Map<String, Object> o1, Map<String, Object> o2) {
+                Double rating1= Double.valueOf(o1.get("rating").toString());
+                Double rating2= Double.valueOf(o2.get("rating").toString());
+
+                return rating2.compareTo(rating1);
+            }
+        });
+        for(int i=0; i<result.size(); i++){
+            result.get(i).put("rank",i);
+        }
+
+
+        System.out.println(result);
+        return result;
+    }
+
+    public List<Map<String, Object>> findRaceDate (String title){
+        List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT distinct(race_date) from race_result order by race_date desc");
         return result;
     }
 
