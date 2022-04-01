@@ -11,8 +11,7 @@
                 </div>
                 <select class="custom-select" id="title">
                     <option value="100퍼" selected>100퍼</option>
-                    <!--                    <option value="FM2021" selected>FM2021</option>-->
-
+                    <option value="FM2022" selected>FM2022</option>
 <!--                    <option value="만두리그">만두리그</option>-->
                 </select>
             </div>
@@ -98,7 +97,7 @@
         var searchList =  [{{#driverList}}'{{driver}}',{{/driverList}}]
 
         $(function(){
-            for(var i = 0 ; i<20; i++){
+            for(var i = 0 ; i<=20; i++){
                 $("#driver_" + i).autocomplete({
                     source: searchList,
                 })

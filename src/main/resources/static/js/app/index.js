@@ -131,7 +131,6 @@ var main = {
                 }else{
                     dnf = 1;
                 }
-
                 inputData = {
                    title : $('#title').val(),
                    raceDate : $('#date-picker1').val(),

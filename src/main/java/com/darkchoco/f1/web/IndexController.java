@@ -78,7 +78,6 @@ public class IndexController {
     public String leagueResult(Model model) {
         List<RaceResult> raceResults =  resultService.findAll();
         model.addAttribute("raceResults", raceResults);
-        System.out.println(model);
         return "leagueResult";
     }
     @GetMapping("/rating")
