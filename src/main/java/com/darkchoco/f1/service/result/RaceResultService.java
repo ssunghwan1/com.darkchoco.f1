@@ -66,7 +66,7 @@ public class RaceResultService {
         List<Map<String, Object>> result = jdbcTemplate.queryForList("SELECT \tcount(*) as count,\n" +
                 "\tsum(point) as point ,\n" +
                 "\tdriver " +
-                "from  race_result    where race_date >= ?  and  driver !='' group by driver",raceDate);
+                "from  race_result    where race_date >= ?  and  driver !='' group by driver having count(*) >=5",raceDate);
 
         List<Map<String, Object>> ratingResult = new ArrayList<>();
         int point;
@@ -77,7 +77,8 @@ public class RaceResultService {
         for(int i=0; i< result.size(); i++){
             point = Integer.parseInt(result.get(i).get("point").toString());
             count = Integer.parseInt(result.get(i).get("count").toString());
-            rating = ((double)point/(double)count)*100 + (double) count*10;
+            //rating = ((double)point/(double)count)*100 + (double) count*10;
+            rating = ((double)point/(double)count)*100;
             result.get(i).put("rating", Math.round(rating));
         }
         System.out.println(result);
